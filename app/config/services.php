@@ -7,12 +7,25 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
+use Phalcon\Mvc\Router;
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
 
+$di['router'] = function () {
+    $router = new Router(false);
+    $router->add("/:controller/:action", array(
+        "controller" => 1,
+        "action"     => 2,
+    ));
+    $router->notFound(array(
+        "controller" => "error",
+        "action" => "error404"
+    ));
+    return $router;
+};
 /**
  * The URL component is used to generate all kind of urls in the application
  */
@@ -85,6 +98,5 @@ $di->set('modelsMetadata', function () {
 $di->set('session', function () {
     $session = new SessionAdapter();
     $session->start();
-
     return $session;
 });

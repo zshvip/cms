@@ -64,4 +64,6 @@ class ControllerBase extends Controller
     protected  function warning($msg) {
         $this->showFlash($msg, "warning");
     }
+
+
 }
