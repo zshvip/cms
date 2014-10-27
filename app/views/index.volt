@@ -9,7 +9,8 @@
     <link rel="shortcut icon" href="{{ url('images/favicon.png') }}">
 
     <title><?php echo $_t->_("common")['title']; ?></title>
-
+    {{ stylesheet_link("css/google-fonts-italic.css") }}
+    {{ stylesheet_link("css/google-fonts-raleway.css") }}
 
     <!-- Bootstrap core CSS -->
     {{ stylesheet_link("js/bootstrap/dist/css/bootstrap.css") }}

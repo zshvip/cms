@@ -9,7 +9,8 @@
     <link rel="shortcut icon" href="<?php echo $this->url->get('images/favicon.png'); ?>">
 
     <title><?php echo $_t->_("common")['title']; ?></title>
-
+    <?php echo $this->tag->stylesheetLink('css/google-fonts-italic.css'); ?>
+    <?php echo $this->tag->stylesheetLink('css/google-fonts-raleway.css'); ?>
 
     <!-- Bootstrap core CSS -->
     <?php echo $this->tag->stylesheetLink('js/bootstrap/dist/css/bootstrap.css'); ?>
