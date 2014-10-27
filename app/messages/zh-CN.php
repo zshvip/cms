@@ -18,4 +18,7 @@ $messages = array(
         'txt_username_placeholder' => '输入登录用户名',
         'txt_password_placeholder' => '输入登录密码',
     ),
+    'errors' => array(
+        'title' => '出错了',
+    ),
 );
