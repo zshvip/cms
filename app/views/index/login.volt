@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh_CN">
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,8 @@
     <link rel="shortcut icon" href="{{ url('images/favicon.png') }}">
 
     <title><?php echo $_t->_("common")['title']; ?> - <?php echo $_t->_("login")['title']; ?></title>
+    {{ stylesheet_link("css/google-fonts-italic.css") }}
+    {{ stylesheet_link("css/google-fonts-raleway.css") }}
 
     <!-- Bootstrap core CSS -->
     {{ stylesheet_link("js/bootstrap/dist/css/bootstrap.css") }}
@@ -18,7 +20,6 @@
 
     <!-- Custom styles for this template -->
     {{ stylesheet_link("css/style.css") }}
-
 </head>
 
 <body class="texture">
