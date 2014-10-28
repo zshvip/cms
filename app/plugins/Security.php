@@ -25,6 +25,21 @@ class Security extends Plugin {
             $acl = new Memory();
             $acl->setDefaultAction(Acl::DENY);
 
+            $roles = Roles::find()->toArray();
+            $auths = Auths::find()->toArray();
+            foreach ($roles as $role) {
+                $r = new Role($role['rolename']);
+                $acl->addRole($r);
+                foreach ($auths as $auth) {
+                    $acl->addResource(new Resource($auth['controller']), $auth['action']);
+                    if ($auth['public'] == 'Y') {
+                        $acl->allow($r->getName(), $auth['controller'], $auth['action']);
+                    }
+                }
+            }
+
+
+
         }
     }
 

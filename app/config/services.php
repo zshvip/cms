@@ -16,13 +16,14 @@ $di = new FactoryDefault();
 
 $di['router'] = function () {
     $router = new Router(false);
+
     $router->add("/:controller/:action", array(
         "controller" => 1,
         "action"     => 2,
     ));
     $router->notFound(array(
-        "controller" => "error",
-        "action" => "error404"
+        "controller" => "index",
+        "action" => "index"
     ));
     return $router;
 };
@@ -69,9 +70,11 @@ $di->set('view', function () use ($config) {
 $di->set('db', function () use ($config) {
     return new DbAdapter(array(
         'host' => $config->database->host,
+        'port' => $config->database->port,
         'username' => $config->database->username,
         'password' => $config->database->password,
-        'dbname' => $config->database->dbname
+        'dbname' => $config->database->dbname,
+        'charset' => 'utf8',
     ));
 });
 

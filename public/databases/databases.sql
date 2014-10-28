@@ -32,7 +32,7 @@ COMMENT='角色表'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
 
-
+DROP TABLE IF EXISTS `auths`;
 CREATE TABLE `auths` (
 	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	`controller` VARCHAR(32) NOT NULL DEFAULT '0',
@@ -41,7 +41,8 @@ CREATE TABLE `auths` (
 	`menu` VARCHAR(64) NULL DEFAULT '0',
 	`parent` INT UNSIGNED NOT NULL DEFAULT '0',
 	`icon` VARCHAR(64) NOT NULL DEFAULT '0',
-	`order` INT UNSIGNED NOT NULL DEFAULT '0',
+	`orderid` INT UNSIGNED NOT NULL DEFAULT '0',
+	`public` CHAR(1) NOT NULL DEFAULT 'N',
 	PRIMARY KEY (`id`),
 	UNIQUE INDEX `controller_action` (`controller`, `action`)
 )

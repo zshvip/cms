@@ -12,7 +12,7 @@
     <title><?php echo $_t->_("common")['title']; ?> - <?php echo $_t->_("login")['title']; ?></title>
     <?php echo $this->tag->stylesheetLink('css/google-fonts-italic.css'); ?>
     <?php echo $this->tag->stylesheetLink('css/google-fonts-raleway.css'); ?>
-    
+
     <!-- Bootstrap core CSS -->
     <?php echo $this->tag->stylesheetLink('js/bootstrap/dist/css/bootstrap.css'); ?>
 
