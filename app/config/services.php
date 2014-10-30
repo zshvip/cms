@@ -14,9 +14,20 @@ use Phalcon\Mvc\Router;
  */
 $di = new FactoryDefault();
 
+/**
+ * We register the events manager
+ */
+$di->set('dispatcher', function() use ($di) {
+    $eventsManager = $di->getShared('eventsManager');
+    $security = new Security($di);
+    $eventsManager->attach('dispatch', $security);
+    $dispatcher = new Phalcon\Mvc\Dispatcher();
+    $dispatcher->setEventsManager($eventsManager);
+    return $dispatcher;
+});
+
 $di['router'] = function () {
     $router = new Router(false);
-
     $router->add("/:controller/:action", array(
         "controller" => 1,
         "action"     => 2,
@@ -33,7 +44,6 @@ $di['router'] = function () {
 $di->set('url', function () use ($config) {
     $url = new UrlResolver();
     $url->setBaseUri($config->application->baseUri);
-
     return $url;
 }, true);
 

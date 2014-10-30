@@ -32,6 +32,7 @@ COMMENT='角色表'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
 
+
 DROP TABLE IF EXISTS `auths`;
 CREATE TABLE `auths` (
 	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,

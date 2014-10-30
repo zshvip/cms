@@ -17,6 +17,7 @@ $messages = array(
         'btn_login' => '登录',
         'txt_username_placeholder' => '输入登录用户名',
         'txt_password_placeholder' => '输入登录密码',
+        'error_null_user_or_pass' => '没有输入登录账号或密码',
     ),
     'errors' => array(
         'title' => '出错了',

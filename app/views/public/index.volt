@@ -32,7 +32,7 @@
                 <h3 class="text-center"><img class="logo-img" src="{{ url('images/logo.png') }}" alt="logo"/><?php echo $_t->_("common")['site_name']; ?></h3>
             </div>
             <div>
-                <form style="margin-bottom: 0px !important;" class="form-horizontal" action="{{ url('user/login') }}">
+                <form style="margin-bottom: 0px !important;" class="form-horizontal" action="{{ url('public/login') }}">
                     <div class="content">
                         {{ content() }}
                         <div class="form-group">
