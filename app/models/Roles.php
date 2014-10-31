@@ -7,5 +7,17 @@
  */
 
 class Roles extends \Phalcon\Mvc\Model {
+    public $id;
+    public $rolename;
+    public $descript;
 
+    public function initialize() {
+        $this->hasManyToMany(
+            "id",
+            "RoleAuth",
+            "roleid", "authid",
+            "Auths",
+            "id"
+        );
+    }
 } 

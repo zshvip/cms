@@ -9,8 +9,6 @@
     <link rel="shortcut icon" href="{{ url('images/favicon.png') }}">
 
     <title><?php echo $_t->_("common")['title']; ?></title>
-    {{ stylesheet_link("css/google-fonts-italic.css") }}
-    {{ stylesheet_link("css/google-fonts-raleway.css") }}
 
     <!-- Bootstrap core CSS -->
     {{ stylesheet_link("js/bootstrap/dist/css/bootstrap.css") }}
@@ -52,6 +50,26 @@
 <div class="cl-sidebar" data-position="right" data-step="1" data-intro="<strong>Fixed Sidebar</strong> <br/> It adjust to your needs." >
     <div class="cl-toggle"><i class="fa fa-bars"></i></div>
     <div class="cl-navblock">
+        <div class="menu-space">
+            <div class="content">
+                <div class="side-user">
+                    <div class="avatar"><img src="{{ url('images/avatar1_50.jpg') }}" alt="Avatar" /></div>
+                    <div class="info">
+                        <a href="#"><?php echo $this->session->get('user')->realname; ?></a>
+                        <img src="{{ url('images/state_online.png') }}" alt="Status" /> <span><?php echo $_t->_("common")['online']; ?></span>
+                    </div>
+                </div>
+
+                <ul class="cl-vnavigation">
+                    <li><a href="#"><i class="fa fa-home"></i><span>Dashboard</span></a>
+                        <ul class="sub-menu">
+                            <li><a href="index.html">Version 1</a></li>
+                            <li><a href="dashboard2.html"><span class="label label-primary pull-right">New</span> Version 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="text-right collapse-button" style="padding:7px 9px;">
             <input type="text" class="form-control search" placeholder="Search..." />
             <button id="sidebar-collapse" class="btn btn-default" style=""><i style="color:#fff;" class="fa fa-angle-left"></i></button>

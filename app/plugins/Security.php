@@ -25,24 +25,20 @@ class Security extends Plugin {
             $acl = new Memory();
             $acl->setDefaultAction(Acl::DENY);
 
-            $roles = Roles::find()->toArray();
-            $auths = Auths::find()->toArray();
+            $roles = Roles::find();
+            $auths = Auths::find();
 
             //所有私有资源
             foreach ($auths as $auth) {
-                $acl->addResource(new Resource($auth['controller']), $auth['action']);
+                $acl->addResource(new Resource($auth->controller), $auth->action);
             }
 
             //为所有角色分配访问权限
             foreach ($roles as $role) {
-                $r = new Role($role['rolename']);
+                $r = new Role($role->rolename);
                 $acl->addRole($r);
-                foreach ($auths as $auth) {
-                    $arr_auths = explode(",", $role['auths']);
-                    $acl->addResource(new Resource($auth['controller']), $auth['action']);
-                    if (in_array($auth['id'],$arr_auths) || $auth['public'] == "Y") {
-                        $acl->allow($r->getName(), $auth['controller'], $auth['action']);
-                    }
+                foreach ($role->Auths as $auth) {
+                    $acl->allow($r->getName(), $auth->controller, $auth->action);
                 }
             }
             $this->persistent->acl = $acl;
@@ -51,6 +47,7 @@ class Security extends Plugin {
     }
 
     public function beforeDispatch(Event $event, Dispatcher $dispatcher) {
+        $user = $this->session->get('user');
         $session = $this->session->get('session');
 
         $controller = $dispatcher->getControllerName();
@@ -59,28 +56,25 @@ class Security extends Plugin {
         $acl = $this->getAcl();
 
         //不在资源表中的默认都可以访问
-        if ($acl->isResource($controller)) {
 
-            if (isset($session['Roles'])) {
-                foreach ($session['Roles'] as $r) {
-                    $allowed = $acl->isAllowed($r, $controller, $action);
+        if ($acl->isResource($controller)) {
+            if (isset($user->Roles)) {
+                foreach ($user->Roles as $r) {
+                    $allowed = $acl->isAllowed($r->rolename, $controller, $action);
                     if ($allowed) {
                         break;
                     }
                 }
-            } else if ($session['Auths'] == "*") {
-                //如果权限设置为*则直接允许访问
-                $allowed = true;
             }
         } else {
             $allowed = true;
         }
         if (!$allowed) {
             //没有登录跳转到登录
-            if (!$session) {
+            if (!$user) {
                 $dispatcher->forward(
                     array(
-                        'controller' => 'public',
+                        'controller' => 'welcome',
                         'action' => 'index'
                     )
                 );
@@ -91,7 +85,7 @@ class Security extends Plugin {
                 if (empty($hisc) || empty($hisa)) {
                     $dispatcher->forward(
                         array(
-                            'controller' => 'public',
+                            'controller' => 'welcome',
                             'action' => 'index'
                         )
                     );

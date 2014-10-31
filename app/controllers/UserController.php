@@ -7,11 +7,8 @@
  */
 
 class UserController extends ControllerBase {
-    /**
-     * 登录处理
-     */
-    public function loginAction()
-    {
-        $this->forward('index/index');
+
+    public function listAction() {
+
     }
 } 

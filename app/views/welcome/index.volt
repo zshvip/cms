@@ -10,8 +10,6 @@
     <link rel="shortcut icon" href="{{ url('images/favicon.png') }}">
 
     <title><?php echo $_t->_("common")['title']; ?> - <?php echo $_t->_("login")['title']; ?></title>
-    {{ stylesheet_link("css/google-fonts-italic.css") }}
-    {{ stylesheet_link("css/google-fonts-raleway.css") }}
 
     <!-- Bootstrap core CSS -->
     {{ stylesheet_link("js/bootstrap/dist/css/bootstrap.css") }}
@@ -32,14 +30,14 @@
                 <h3 class="text-center"><img class="logo-img" src="{{ url('images/logo.png') }}" alt="logo"/><?php echo $_t->_("common")['site_name']; ?></h3>
             </div>
             <div>
-                <form style="margin-bottom: 0px !important;" class="form-horizontal" action="{{ url('public/login') }}">
+                <form style="margin-bottom: 0px !important;" class="form-horizontal" action="{{ url('welcome/login') }}" method="post">
                     <div class="content">
                         {{ content() }}
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" placeholder="<?php echo $_t->_("login")['txt_username_placeholder']; ?>" id="username" class="form-control">
+                                    <input type="text" placeholder="<?php echo $_t->_("login")['txt_username_placeholder']; ?>" name="username" id="username" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -47,7 +45,7 @@
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input type="password" placeholder="<?php echo $_t->_("login")['txt_password_placeholder']; ?>" id="password" class="form-control">
+                                    <input type="password" placeholder="<?php echo $_t->_("login")['txt_password_placeholder']; ?>" name="password" id="password" class="form-control">
                                 </div>
                             </div>
                         </div>

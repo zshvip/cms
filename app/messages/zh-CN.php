@@ -10,6 +10,7 @@ $messages = array(
         //--------------通用标题文字----------------
         'site_name' => 'IOD信息管理平台',
         'title' => 'IOD信息管理平台',
+        'online' => '在线',
     ),
 
     'login' => array(
@@ -18,6 +19,9 @@ $messages = array(
         'txt_username_placeholder' => '输入登录用户名',
         'txt_password_placeholder' => '输入登录密码',
         'error_null_user_or_pass' => '没有输入登录账号或密码',
+        'error_user_not_exists' => '用户不存在',
+        'error_password_wrong' => '密码输入不正确',
+        'error_not_active' => '账号未激活',
     ),
     'errors' => array(
         'title' => '出错了',
